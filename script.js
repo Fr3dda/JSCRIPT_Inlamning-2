@@ -3,6 +3,10 @@ const input = document.querySelector('#todoInput');
 const output = document.querySelector('#output');
 
 
+
+
+
+
 let todos = [];
 
 const fetchTodos = async () => {
@@ -15,6 +19,16 @@ const fetchTodos = async () => {
 }
 
 fetchTodos();
+
+const validateText = (input) => {
+    if(input.value.trim() === '') { 
+      setError(input, 'Name can\'t be empty')
+      return false;
+    }
+
+    }
+    
+
 
 const listTodos = () => {
     output.innerHTML = ''
@@ -44,6 +58,16 @@ const listTodos = () => {
 
     }
 
+    function validateForm() {
+        let input = document.forms["todoForm"]["todoInput"].value;
+        if (input == "") {
+          alert("Name must be filled out");
+          return false;
+        }
+      }
+
+
+
 
 function removeTodo(id, todo) {
     todos = todos.filter(todo => todo.id !== id )
@@ -51,6 +75,20 @@ function removeTodo(id, todo) {
 
     console.log(todos)
 }
+
+const setError = (input, textMessage) => {
+    const parent = input.parentElement;
+    parent.classList.add('is-invalid');
+    parent.querySelector('.invalid-input').innerText = textMessage;
+  }
+const validate = input => {
+    switch(input.type) {
+      case 'text': return validateText(input)
+      default:
+        break;
+    }
+}
+    
 
 const createNewTodo = title => {
     fetch ('https://jsonplaceholder.typicode.com/todos', {
@@ -76,10 +114,13 @@ const createNewTodo = title => {
 
 form.addEventListener('submit', e => {
     e.preventDefault();
+
+    validateText(todoInput)
     if(input.value !== '') {
       createNewTodo(input.value);
       input.value = '';
       input.focus()
+
   
     }
   })

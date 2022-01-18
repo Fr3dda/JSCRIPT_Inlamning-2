@@ -1,3 +1,8 @@
+:root {
+    --clr-error: #db1010;
+}
+
+
 *{
     margin: 0;
     padding: 0;
@@ -16,9 +21,9 @@ body{
     text-align: center;
     padding: 2rem;
     background-color: rgb(199, 53, 0);
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     color: #eeeeee;
-    text-shadow: 1px 0 0 rgba(197, 197, 197, 0.144), 0 -1px 0 rgba(0, 0, 0, 0.007), 0 1px 0 #000, -1px 0 0 #000;
+    text-shadow: 1px 0 0 rgba(0, 0, 0, 0), 0 -1px 0 rgba(0, 0, 0, 0.007), 0 1px 0 #000, -1px 0 0 #000;
     
 }
 
@@ -40,45 +45,64 @@ body{
     margin-block: 2rem;
 }
 .input-group button {
+    background-color: rgb(204, 56, 2) !important;
     flex: 1;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 50px 50px 0 !important;
 }
 
 /* BUTTON */
 .btn {
     padding: .5em 1.4em;
-    border: 1px solid transparent;
+    border: 1px solid transparent !important;
     border-radius: 5px;
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
 }
 .btn-primary{
-    background-color:rgb(189, 50, 0);
+    background-color:rgb(189, 50, 0) !important;
     color: #fff;
     font-weight: 200;
 }
 .btn-danger{
-    background-color: red;
+    background-color: red !important;
     color: #fff;
 }
 .btn-sm{
-    padding: 0.5rem .8rem;
+    background-color: rgb(255, 0, 0) !important;
+    padding: .7rem  .9rem;
+    border-radius: 100px;
 }
 
 
 /* FORM/INPUT - END - */
 
-
+.is-invalid .form-control {
+    border: 1px solid var(--clr-error);
+    outline: 1px solid var(--clr-error);
+  }
+  .is-invalid .invalid-input {
+    display: block;
+    /* visibility: visible; */
+  }
+  .input-group .invalid-input,
+.input-group-check .invalid-input {
+  margin-top: .2rem;
+  color: var(--clr-error);
+  font-size: .9rem;
+  display: none;
+  /* visibility: hidden; */
+}
 
 /*  TODO  */
 
 .todo{
+    background-color: rgb(253, 202, 183);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 5px 5px 10px rgba(255, 68, 0, 0.336);
-    border: 1px solid rgba(0, 0, 0, 0.527);
+    justify-content: space-between !important;
+    align-items: center !important;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.336);
+    /* border: 1px solid rgba(0, 0, 0, 0.527); */
     padding: .5rem;
     border-radius: 10px;
     margin-bottom: 1rem;
