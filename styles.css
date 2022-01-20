@@ -22,10 +22,10 @@ body{
 }
 .header {
     background: rgb(0,0,0);
-    background: linear-gradient(178deg,  rgba(255, 32, 3, 0.986) 0%,
-                                        rgba(255, 86, 1, 0.952) 40%,
-                                        rgba(252, 252, 252, 0.062) 80%);
-
+    background: linear-gradient(90deg,  rgba(255, 32, 3, 0.984) 0%,
+                                        rgba(255, 86, 1, 0.952) 50%,
+                                        rgb(250, 142, 0) 100%);
+border-bottom: 1px solid rgba(0, 0, 0, 0.329);
     text-align: center;
     padding: 30px 40px;
     /* background-color: rgb(199, 53, 0); */
@@ -45,7 +45,7 @@ body{
  flex: 3;
  padding: .8rem .5rem;
  border-radius: 10px 0 0 10px;
- border: 1px solid black;
+ border: 1px solid rgb(204, 56, 2) !important;
 
 }
 /* INPUT */
