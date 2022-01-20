@@ -20,13 +20,6 @@ const fetchTodos = async () => {
 
 fetchTodos();
 
-const validateText = (input) => {
-    if(input.value.trim() === '') { 
-      setError(input, 'Name can\'t be empty')
-      return false;
-    }
-
-    }
     
 
 
@@ -58,13 +51,6 @@ const listTodos = () => {
 
     }
 
-    function validateForm() {
-        let input = document.forms["todoForm"]["todoInput"].value;
-        if (input == "") {
-          alert("Name must be filled out");
-          return false;
-        }
-      }
 
 
 
@@ -76,18 +62,8 @@ function removeTodo(id, todo) {
     console.log(todos)
 }
 
-const setError = (input, textMessage) => {
-    const parent = input.parentElement;
-    parent.classList.add('is-invalid');
-    parent.querySelector('.invalid-input').innerText = textMessage;
-  }
-const validate = input => {
-    switch(input.type) {
-      case 'text': return validateText(input)
-      default:
-        break;
-    }
-}
+
+
     
 
 const createNewTodo = title => {
@@ -108,19 +84,27 @@ const createNewTodo = title => {
     })
 }
 
-
-
-
-
-form.addEventListener('submit', e => {
+form.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    validateText(todoInput)
-    if(input.value !== '') {
-      createNewTodo(input.value);
-      input.value = '';
-      input.focus()
-
   
+     /* console.log(Date.now().toString()); */
+  
+    if(input.value !== '') {
+      input.classList.remove('is-invalid');
+      const todo = {
+        id: Date.now().toString(),
+        title: input.value,
+        completed: false
+      }
+      todos.push(todo);
+      listTodos();
+      input.value = ''
     }
+    else {
+      input.classList.add('is-invalid');
+    }
+  
   })
+
+
+
