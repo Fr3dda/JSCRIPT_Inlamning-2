@@ -13,9 +13,9 @@ const fetchTodos = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/todos')
     const data = await res.json()
     todos = data;
-
-
- listTodos();
+    
+    
+    listTodos();
 }
 
 fetchTodos();
@@ -34,13 +34,13 @@ const listTodos = () => {
         let card = document.createElement('div');
         card.classList.add('todo');
 
-        let title = document.createElement('p')
+        let title = document.createElement('p');
         title.classList.add('todo-title');
         title.innerText = todo.title
 
         let button = document.createElement('button');
         button.classList.add('btn', 'btn-danger', 'btn-sm');
-        button.innerText ='X'
+        button.innerText ='X';
 
 
         card.appendChild(title);
@@ -67,7 +67,7 @@ function removeTodo(id, todo) {
     
 
 const createNewTodo = title => {
-    fetch ('https://jsonplaceholder.typicode.com/todos', {
+    fetch('https://jsonplaceholder.typicode.com/todos', {
         method: 'POST',
         headers: {
             'Content-type': 'application/json; charset=UTF-8'
@@ -82,13 +82,21 @@ const createNewTodo = title => {
         todos.unshift(data);
         listTodos()
     })
+
+    listTodos();
 }
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    if(input.value !== '') {                         /* <-- Aktiv - Ingen todo, rätt validering.
+        */        createNewTodo(input.value);          /* <--Ej aktiv - Gör en todo, fel validering */ 
+        input.value = '';
+        input.focus() 
+     console.log(Date.now().toString());
   
-     /* console.log(Date.now().toString()); */
-  
+
+
+
     if(input.value !== '') {
       input.classList.remove('is-invalid');
       const todo = {
@@ -103,8 +111,22 @@ form.addEventListener('submit', (e) => {
     else {
       input.classList.add('is-invalid');
     }
-  
+
+    }
+
+
+})
+
+
+
+output.addEventListener('click', e => {
+    // console.log(e.target.parentNode.id)
+    if(e.target.type === 'button') {
+      todos = todos.filter(todo => todo.id !== e.target.parentNode.id);
+      listTodos();
+    }
   })
+
 
 
 
