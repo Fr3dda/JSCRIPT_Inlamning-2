@@ -90,6 +90,12 @@ form.addEventListener('submit', (e) => {
      /* console.log(Date.now().toString()); */
   
     if(input.value !== '') {
+        if(input.value !== '') {
+            createNewTodo(input.value);
+            input.value = '';
+            input.focus()
+        
+          }
       input.classList.remove('is-invalid');
       const todo = {
         id: Date.now().toString(),
