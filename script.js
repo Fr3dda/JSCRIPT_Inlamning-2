@@ -3,25 +3,17 @@ const input = document.querySelector('#todoInput');
 const output = document.querySelector('#output');
 
 
-
-
-
-
 let todos = [];
 
 const fetchTodos = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/todos')
     const data = await res.json()
     todos = data;
-    
-    
+  
     listTodos();
 }
 
 fetchTodos();
-
-    
-
 
 const listTodos = () => {
     output.innerHTML = ''
@@ -51,20 +43,11 @@ const listTodos = () => {
 
     }
 
-
-
-
-
 function removeTodo(id, todo) {
     todos = todos.filter(todo => todo.id !== id )
     listTodos()
-
     console.log(todos)
 }
-
-
-
-    
 
 const createNewTodo = title => {
     fetch('https://jsonplaceholder.typicode.com/todos', {
@@ -75,26 +58,19 @@ const createNewTodo = title => {
         body: JSON.stringify({
             title,
             completed: false
-        })
     })
+})
     .then(res => res.json())
     .then(data => {
         todos.unshift(data);
         listTodos()
-    })
+})
 
     listTodos();
 }
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(input.value !== '') {                         /* <-- Aktiv - Ingen todo, rätt validering.
-        */        createNewTodo(input.value);          /* <--Ej aktiv - Gör en todo, fel validering */ 
-        input.value = '';
-        input.focus() 
-     console.log(Date.now().toString());
-  
-
 
 
     if(input.value !== '') {
@@ -117,13 +93,7 @@ form.addEventListener('submit', (e) => {
     else {
       input.classList.add('is-invalid');
     }
-
-    }
-
-
 })
-
-
 
 output.addEventListener('click', e => {
     // console.log(e.target.parentNode.id)
@@ -131,7 +101,7 @@ output.addEventListener('click', e => {
       todos = todos.filter(todo => todo.id !== e.target.parentNode.id);
       listTodos();
     }
-  })
+})
 
 
 
